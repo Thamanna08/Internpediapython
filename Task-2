@@ -1,0 +1,42 @@
+# Todo list program for BTech students
+tasks = [
+    {"task": "Complete assignments", "done": False},
+    {"task": "Submit assignments", "done": False},
+    {"task": "Attending labs", "done": False},
+    {"task": "Complete lab observations and records", "done": False},
+    {"task": "Prepared for mid exams", "done": False},
+    {"task": "Writing mid exams well", "done": False},
+    {"task": "Attendanc>75%", "done": False},
+    {"task": "Exam fee paid", "done": False},
+    {"task": "Prepared for sem exams", "done": False}
+]
+def view_tasks():
+    print("Todo list:")
+    for task in tasks:
+        print(f"{task['task']} - {'Done' if task['done'] else 'Not done'}")
+def mark_task_done(task_name):
+    for task in tasks:
+        if task["task"] == task_name:
+            task["done"] = True
+            print(f"Task '{task_name}' marked as done!")
+def add_task():
+    task_name = input("Enter a new task: ")
+    tasks.append({"task": task_name, "done": False})
+    print(f"Task '{task_name}' added!")
+while True:
+    print("1. View tasks")
+    print("2. Mark task done")
+    print("3. Add task")
+    print("4. Quit")
+    choice = input("Choose an option: ")
+    if choice == "1":
+        view_tasks()
+    elif choice == "2":
+        task_name = input("Enter task name to mark as done: ")
+        mark_task_done(task_name)
+    elif choice == "3":
+        add_task()
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice!")
