@@ -1,0 +1,30 @@
+print("__Welcome to Currency Converter__")
+print("***Currency List***")
+currencies = {
+    1: "INR Indian Rupee",
+    2: "USD US Dollar",
+    3: "EUR Euro",
+    4: "SGD Singapore Dollar",
+    5: "Exit"
+}
+conversion_rates = {
+    1: {2: 0.012, 3: 0.011, 4: 0.0161},
+    2: {1: 83.5103, 3: 0.9227, 4: 1.3486},
+    3: {1: 90.5085, 2: 1.0838, 4: 1.4616},
+    4: {1: 61.9238, 2: 0.7415, 3: 0.6842}
+}
+exit = False
+while not exit:
+    for key, value in currencies.items():
+        print(f"{key}. {value}")
+    input_currency = int(input("Enter the base currency (1-4): "))
+    if input_currency == 5:
+        print("Thanks for using Currency Converter")
+        exit = True
+    else:
+        amount = float(input("Enter the amount: "))
+        target_currency = int(input("Enter the target currency (1-4): "))
+        if input_currency in conversion_rates and target_currency in conversion_rates[input_currency]:
+            print(f"Converted amount: {currencies[target_currency].split()[1]} {amount * conversion_rates[input_currency][target_currency]:.2f}")
+        else:
+            print("Invalid option")
